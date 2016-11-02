@@ -33,12 +33,6 @@ public class ModItem extends Item {
     }
 
     public String getUnlocalizedNameSub(){
-        System.out.println(this.getUnlocalizedName().substring(5));
-        System.out.println(this.getUnlocalizedName().substring(5));
-        System.out.println(this.getUnlocalizedName().substring(5));
-        System.out.println(this.getUnlocalizedName().substring(5));
-        System.out.println(this.getUnlocalizedName().substring(5));
-        System.out.println(this.getUnlocalizedName().substring(5));
         return this.getUnlocalizedName().substring(5);
     }
 

@@ -1,5 +1,7 @@
 package com.ling.test;
 
+import com.ling.test.block.ModBlock;
+import com.ling.test.block.ModBlocks;
 import com.ling.test.item.ModItems;
 import com.ling.test.proxy.CommonProxy;
 import com.ling.test.tabs.CreativeModTab;
@@ -31,6 +33,7 @@ public class ExampleMod
     @EventHandler
     public void preinit(FMLPreInitializationEvent event){
         creativeTab1 = new CreativeModTab(CreativeTabs.getNextID(), ExampleMod.MODID+"tab");
+        ModBlocks.preinit();
         ModItems.preinit();
         proxy.pretinit(event);
     }

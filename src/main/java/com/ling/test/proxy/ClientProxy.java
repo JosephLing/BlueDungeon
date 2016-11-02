@@ -1,5 +1,6 @@
 package com.ling.test.proxy;
 
+import com.ling.test.block.ModBlocks;
 import com.ling.test.item.ModItems;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -19,6 +20,7 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void init(FMLInitializationEvent event) {
         ModItems.regesterRenders();
+        ModBlocks.registerRenders();
     }
 
     @Override

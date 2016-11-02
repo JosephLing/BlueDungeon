@@ -13,7 +13,6 @@ public class ModItems {
 
     public static ModItem testItem;
 
-
     public static void preinit(){
         testItem = new TestItem();
         registerItems();
@@ -29,7 +28,6 @@ public class ModItems {
     }
 
     public static void regesterRender(ModItem item){
-        System.err.println(ExampleMod.MODID + ":" + item.getUnlocalizedNameSub());
         Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(
                 item,
                 0,
