@@ -1,5 +1,6 @@
 {
   "variants": {
-    "normal": { "model": "test:crate_basic" }
+    "normal": { "model": "test:crate_basic" },
+    "inventory": { "model": "test:crate_basic" }
   }
 }

@@ -28,39 +28,24 @@ public class ModBlocks{
         registerBlock(crate_basic, CrateBasic.name);
     }
 
-    public static void registerBlock(Block block, String name) {
-        GameRegistry.register(block, new ResourceLocation(ExampleMod.MODID, name)); // registers block
-        System.out.println("we have an error! :)");
-        System.out.println("we have an error! :)");
-        System.out.println("we have an error! :)");
-        System.out.println("we have an error! :)");
-        System.out.println("we have an error! :)");
-        System.out.println("we have an error! :)");
-        System.out.println("we have an error! :)");
-        // registers block as item
-        GameRegistry.register(new ItemBlock(block), new ResourceLocation(ExampleMod.MODID, name));
-    }
+
 
     public static void registerRenders() {
         registerRender(crate_basic);
     }
 
-    public static void registerRender(Block block) {
-        Item item = Item.getItemFromBlock(block);
-        System.out.println(ExampleMod.MODID + ":" + item.getUnlocalizedName().substring(5));
-        System.out.println(ExampleMod.MODID + ":" + item.getUnlocalizedName().substring(5));
-        System.out.println(ExampleMod.MODID + ":" + item.getUnlocalizedName().substring(5));
-        System.out.println(ExampleMod.MODID + ":" + item.getUnlocalizedName().substring(5));
-        System.out.println(ExampleMod.MODID + ":" + item.getUnlocalizedName().substring(5));
-        System.out.println(ExampleMod.MODID + ":" + item.getUnlocalizedName().substring(5));
-        Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(
-                item,
-                0,
-                new ModelResourceLocation(ExampleMod.MODID + ":" + item.getUnlocalizedName().substring(5), "inventory")
-        );
-
-
+    public static void registerBlock(Block block, String name) {
+        GameRegistry.register(block, new ResourceLocation(ExampleMod.MODID, name));
+        GameRegistry.register(new ItemBlock(block), new ResourceLocation(ExampleMod.MODID, name));
     }
 
 
+    public static void registerRender(Block block) {
+        Item item = Item.getItemFromBlock(block);
+        Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, 0, new ModelResourceLocation(ExampleMod.MODID + ":" + item.getUnlocalizedName().substring(5), "inventory"));
+    }
+
 }
+
+
+
