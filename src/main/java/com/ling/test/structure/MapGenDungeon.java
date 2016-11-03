@@ -15,6 +15,8 @@ import java.util.Random;
  */
 public class MapGenDungeon extends MapGenStructure
 {
+    public static String DungoenID = "test1";
+
     private int distance;
     private int size;
     private String name;
@@ -27,6 +29,11 @@ public class MapGenDungeon extends MapGenStructure
         distance = dist;
         name = dungeonName;
         this.size = size;
+        System.out.println("Called");
+        System.out.println("Called");
+        System.out.println("Called");
+        System.out.println("Called");
+        System.out.println("Called");
     }
 
     @Override
@@ -35,12 +42,23 @@ public class MapGenDungeon extends MapGenStructure
         return name;
     }
 
+
+
+    @Override
     protected StructureStart getStructureStart(int p_getStructureStart_1_, int p_getStructureStart_2_) {
+        System.out.println("SPAWNING");
+        System.out.println("SPAWNING");
+        System.out.println("SPAWNING");
+        System.out.println("SPAWNING");
+        System.out.println("SPAWNING");
+        System.out.println("SPAWNING");
+        System.out.println("SPAWNING");
         return new MapGenDungeon.Start(this.worldObj, this.rand, p_getStructureStart_1_, p_getStructureStart_2_, this.size);
     }
 
 
     protected boolean canSpawnStructureAtCoords(int p_canSpawnStructureAtCoords_1_, int p_canSpawnStructureAtCoords_2_) {
+        System.out.println("Called 2");
         int lvt_3_1_ = p_canSpawnStructureAtCoords_1_;
         int lvt_4_1_ = p_canSpawnStructureAtCoords_2_;
         if(p_canSpawnStructureAtCoords_1_ < 0) {
@@ -56,11 +74,17 @@ public class MapGenDungeon extends MapGenStructure
         Random lvt_7_1_ = this.worldObj.setRandomSeed(lvt_5_1_, lvt_6_1_, 10387312);
         lvt_5_1_ *= this.distance;
         lvt_6_1_ *= this.distance;
-        lvt_5_1_ += lvt_7_1_.nextInt(this.distance - 8);
-        lvt_6_1_ += lvt_7_1_.nextInt(this.distance - 8);
+        lvt_5_1_ += lvt_7_1_.nextInt(this.distance - 4);
+        lvt_6_1_ += lvt_7_1_.nextInt(this.distance - 4);
         if(lvt_3_1_ == lvt_5_1_ && lvt_4_1_ == lvt_6_1_) {
             boolean lvt_8_1_ = this.worldObj.getBiomeProvider().areBiomesViable(lvt_3_1_ * 16 + 8, lvt_4_1_ * 16 + 8, 0, VILLAGE_SPAWN_BIOMES);
             if(lvt_8_1_) {
+                System.out.println("can spawn");
+                System.out.println("can spawn");
+                System.out.println("can spawn");
+                System.out.println("can spawn");
+                System.out.println("can spawn");
+                System.out.println("can spawn");
                 return true;
             }
         }
@@ -73,7 +97,12 @@ public class MapGenDungeon extends MapGenStructure
         private boolean hasMoreThanTwoComponents;
 
         public Start(World p_i2092_1_, Random p_i2092_2_, int p_i2092_3_, int p_i2092_4_, int size) {
+            super(p_i2092_3_, p_i2092_4_);
             System.out.println("Creating dungone");
+            System.out.println("Creating dungone");
+            System.out.println("Creating dungone");
+            System.out.println("Creating dungone");
+
         }
     }
 }

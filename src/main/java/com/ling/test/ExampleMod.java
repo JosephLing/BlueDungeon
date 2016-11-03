@@ -1,10 +1,9 @@
 package com.ling.test;
 
-import com.ling.test.block.ModBlock;
 import com.ling.test.block.ModBlocks;
 import com.ling.test.item.ModItems;
 import com.ling.test.proxy.CommonProxy;
-import com.ling.test.structure.ModStructure;
+import com.ling.test.structure.ModGenDungeon;
 import com.ling.test.tabs.CreativeModTab;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.fml.common.Mod;
@@ -36,13 +35,13 @@ public class ExampleMod
         creativeTab1 = new CreativeModTab(CreativeTabs.getNextID(), ExampleMod.MODID+"tab");
         ModBlocks.preinit();
         ModItems.preinit();
+        ModGenDungeon.init();
         proxy.pretinit(event);
     }
 
 
     @EventHandler
     public void init(FMLInitializationEvent event){
-        ModStructure.init();
         proxy.init(event);
     }
 
