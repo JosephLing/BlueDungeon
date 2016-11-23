@@ -22,12 +22,16 @@ import java.util.Random;
  */
 public class CrateBasic extends ModBlock {
 
-    public static String name = "crate_basic";
+    private Item[] common;
+    private Item[] uncommon;
+    private Item[] rare;
 
-
-    public CrateBasic() {
-        super(CrateBasic.name, Material.WOOD);
-        setHardness(2F);
+    public CrateBasic(String name, float hardness, Item[] common, Item[] uncommon, Item[] rare) {
+        super(name, Material.WOOD);
+        setHardness(hardness);
+        this.common = common;
+        this.uncommon = uncommon;
+        this.rare = rare;
     }
 
     /**
@@ -51,35 +55,25 @@ public class CrateBasic extends ModBlock {
         return false;
     }
 
-
     /**
-     * Flint 10%
-     * Feather, Coal, String 5%
-     * Poisonous potato, Spider Eye 2%
-     * sticks 50%
+     *
      * @param state
      * @param rand
-     * @param fortune
+     * @param fortune 0 to 3
      * @return
      */
     @Nullable
     @Override
     public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-        double randNum = rand.nextDouble();
-        if (randNum < 0.1){
-            return Items.FLINT;
-        }else if (randNum < 0.2){
-            return Items.FEATHER;
-        }else if (randNum < 0.25){
-            return Items.COAL;
-        }else if (randNum < 0.3){
-            return Items.STRING;
-        }else if (randNum < 0.32){
-            return Items.SPIDER_EYE;
-        }else if (randNum < 0.34){
-            return Items.POISONOUS_POTATO;
-        }else{
+        double chance = rand.nextDouble();
+        if ((chance <= 0.35  && fortune == 0) || (fortune != 0 && chance <= 0.2)){
             return Items.STICK;
+        }else if (chance <= 0.7 - (0.1*fortune)){
+            return common[rand.nextInt(common.length)];
+        }else if (chance <= 0.9 - (0.05*fortune)){
+            return uncommon[rand.nextInt(uncommon.length)];
+        }else{
+            return rare[rand.nextInt(rare.length)];
         }
     }
 }

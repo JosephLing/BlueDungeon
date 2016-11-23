@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "normal": { "model": "test:crate_uncommon" },
+    "inventory": { "model": "test:crate_uncommon" }
+  }
+}
