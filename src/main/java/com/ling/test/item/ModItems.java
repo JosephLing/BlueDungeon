@@ -12,14 +12,17 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class ModItems {
 
     public static ModItem testItem;
+    public static ModItem testWorldGenDungoen;
 
     public static void preinit(){
         testItem = new TestItem();
+        testWorldGenDungoen = new TestWorldGenDungoen();
         registerItems();
     }
 
     public static void registerItems(){
         GameRegistry.register(testItem, new ResourceLocation(ExampleMod.MODID, testItem.getUnlocalizedNameSub()));
+        GameRegistry.register(testWorldGenDungoen, new ResourceLocation(ExampleMod.MODID, testWorldGenDungoen.getUnlocalizedNameSub()));
     }
 
     public static void regesterRenders(){

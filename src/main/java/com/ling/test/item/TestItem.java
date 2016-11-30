@@ -25,20 +25,6 @@ public class TestItem extends ModItem{
         super("test_item", 1, null);
     }
 
-    /**
-     * check out EE3 for the source code to enable to create a terria craftable items from current items in inventory
-     */
-
-
-    public static void genCraftting(){
-        List<IRecipe> recipes = CraftingManager.getInstance().getRecipeList();
-        for (int i = 0; i < recipes.size(); i++) {
-            IRecipe foo = recipes.get(i);
-            foo.getRecipeOutput();
-        }
-
-    }
-
 
     @Override
     public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
@@ -49,7 +35,7 @@ public class TestItem extends ModItem{
             } else if (currentBlock == Blocks.FURNACE){
 
             }
-            playerIn.addChatComponentMessage(new TextComponentString(worldIn.getBlockState(pos).getBlock().getLocalizedName()));
+            //playerIn.addChatComponentMessage(new TextComponentString(worldIn.getBlockState(pos).getBlock().getLocalizedName()));
             playerIn.addChatComponentMessage(new TextComponentString(CraftingManager.getInstance().getRecipeList().get(0).getClass().getName()));
         }
         return EnumActionResult.SUCCESS;
