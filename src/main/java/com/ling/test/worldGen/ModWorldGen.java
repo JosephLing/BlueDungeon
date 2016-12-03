@@ -12,5 +12,6 @@ public class ModWorldGen
 
         // structures
         GameRegistry.registerWorldGenerator(new WorldGenDungeon(), 1);
+        GameRegistry.registerWorldGenerator(new WorldGenVillageDungeon(), 1);
     }
 }

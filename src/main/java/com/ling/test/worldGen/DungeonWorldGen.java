@@ -1,6 +1,7 @@
 package com.ling.test.worldGen;
 
 import com.ling.test.block.ModBlocks;
+import com.ling.test.tileenitity.ExplodingSpawner;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
@@ -23,6 +24,15 @@ public class DungeonWorldGen extends WorldGenerator
 
     private World genWorld;
     private Random rand;
+    private int size;
+
+    public DungeonWorldGen(int size){
+        this.size = size;
+    }
+
+    public DungeonWorldGen(){
+        this.size = 3;
+    }
 
     @Override
     public boolean generate(World world, Random random, BlockPos blockPos)
@@ -32,27 +42,29 @@ public class DungeonWorldGen extends WorldGenerator
         int y = blockPos.getY();
         int height = 4;
         int chance;
+        System.out.println("Generated at " + chunkX + " " + y + " " + chunkZ);
 
         genWorld = world;
         rand = random;
 
 
-        genAreaRoof(chunkX, y, chunkZ, 9, height);
-        clearSpace(chunkX, y, chunkZ, 9, height);
-        for (int i = 0; i < 1; i++)
+        genAreaRoof(chunkX, y, chunkZ, 9*size, height);
+        clearSpace(chunkX, y, chunkZ, 9*size, height);
+        for (int i = 0; i < size; i++)
         {
-            for (int j = 0; j < 1; j++)
+            for (int j = 0; j < size; j++)
             {
                 chance = random.nextInt(10);
-                if (chance <= 5){
-                    genRoomLayout2(chunkX+(9*j), y, chunkZ+(9*i), 9, height, 4);
-                }else if (chance <= 7){
-                    genRoomLayout2(chunkX+(9*j), y, chunkZ+(9*i), 9, height, 4);
+                if (chance <= 6){
+                    genRoomLayout1(chunkX+(9*j), y, chunkZ+(9*i), 9, height, 4);
+                }else if (chance <= 8){
+                    genEmptyRoom(chunkX+(9*j), y, chunkZ+(9*i), 9, height, 4);
                 }else{
                     genRoomLayout2(chunkX+(9*j), y, chunkZ+(9*i), 9, height, 4);
                 }
             }
         }
+        genEmptyRoom(chunkX+(9), y, chunkZ+9, 12, height, 4);
         return true;
     }
 
@@ -63,10 +75,10 @@ public class DungeonWorldGen extends WorldGenerator
 
     private void createMobSpawner(int x, int y, int z){
         BlockPos spawnerPos = new BlockPos(x, y, z);
-        genWorld.setBlockState(spawnerPos, Blocks.MOB_SPAWNER.getDefaultState(), 2);
+        genWorld.setBlockState(spawnerPos, ModBlocks.exploding_spawner.getDefaultState(), 2);
         TileEntity sp = genWorld.getTileEntity(spawnerPos);
-        if (sp instanceof TileEntityMobSpawner){
-            ((TileEntityMobSpawner)sp).getSpawnerBaseLogic().setEntityName(DungeonHooks.getRandomDungeonMob(rand));
+        if (sp instanceof ExplodingSpawner){
+            ((ExplodingSpawner)sp).getSpawnerBaseLogic().setEntityName(DungeonHooks.getRandomDungeonMob(rand));
         }
     }
 
@@ -136,8 +148,25 @@ public class DungeonWorldGen extends WorldGenerator
                         setBlock(x+i, y+k, z+j, Blocks.AIR);
                     }
                 }
-                if (j % range-2 == 0 && i % range-2 == 0){ // offset of 1 from the boarder
-                    setBlock(x+i, y, z+j, Blocks.GOLD_BLOCK);
+                if (i==range/2 && j==range/2){ // offset of 1 from the boarder
+                    for (int k = 1; k < height+1; k++)
+                    {
+                        setBlock(x+i+range/4, y+k, z+j, Blocks.STONEBRICK);
+                        setBlock(x+i-range/4, y+k, z+j, Blocks.STONEBRICK);
+                        setBlock(x+i, y+k, z+j-range/4, Blocks.STONEBRICK);
+                        setBlock(x+i, y+k, z+j+range/4, Blocks.STONEBRICK);
+                    }
+                    int chance = rand.nextInt(10);
+                    // so there is a chance there will done but there is a chance there will be 4
+                    if (chance > 2){
+                        createMobSpawner(x+i+range/4, y, z+j);
+                    }else if (chance > 4){
+                        createMobSpawner(x+i-range/4, y, z+j);
+                    }else if (chance > 6){
+                        createMobSpawner(x+i, y, z+j+range/4);
+                    }else if (chance > 8){
+                        createMobSpawner(x+i, y, z+j+range/4);
+                    }
                 }
             }
         }
@@ -192,42 +221,10 @@ public class DungeonWorldGen extends WorldGenerator
                     doorCount ++;
                     for (int k = 1; k < height+1; k++)
                     {
-                        setBlock(x+i, y+k, z+j, Blocks.DIAMOND_BLOCK);
+                        setBlock(x+i, y+k, z+j, Blocks.AIR);
                     }
                 }
             }
         }
     }
-
-//    private void genEmptyRoom(int x, int y, int z, int range, int height, int doors){
-//        int doorCount = 0;
-//        for (int i = 0; i < range; i++)
-//        {
-//            for (int j = 0; j < range; j++)
-//            {
-//                setBlock(x+i, 10, z+j, Blocks.COBBLESTONE);
-//                if (j==0 || i==range-1 || i==0 || j==range-1 ){
-//
-//                    if (((i==0 && j==range/2) || (j==0 && i==range/2) || (i==range-1 && j==range/2) || (j==range-1 && i==range/2)) && (doors>0 && doorCount <= doors)){
-//                        for (int k = 1; k < height; k++)
-//                        {
-//                            setBlock(x+i, y+k, z+j, Blocks.AIR);
-//                        }
-//                        doorCount ++;
-//                    }else{
-//                        for (int k = 1; k < height+1; k++)
-//                        {
-//                            createWall(x+i, y+k, z+j);
-//                        }
-//                    }
-//                }else{
-//                    for (int k = 1; k < height; k++)
-//                    {
-//                        setBlock(x+i, y+k, z+j, Blocks.AIR);
-//                    }
-//                }
-//            }
-//        }
-//    }
-//
 }

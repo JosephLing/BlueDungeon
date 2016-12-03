@@ -5,6 +5,7 @@ import com.ling.test.item.ModItems;
 import com.ling.test.proxy.CommonProxy;
 import com.ling.test.structure.ModGenDungeon;
 import com.ling.test.tabs.CreativeModTab;
+import com.ling.test.tileenitity.ModTileEntities;
 import com.ling.test.worldGen.ModWorldGen;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.fml.common.Mod;
@@ -35,6 +36,7 @@ public class ExampleMod
     public void preinit(FMLPreInitializationEvent event){
         creativeTab1 = new CreativeModTab(CreativeTabs.getNextID(), ExampleMod.MODID+"tab");
         ModBlocks.preinit();
+        ModTileEntities.preinit();
         ModItems.preinit();
         proxy.pretinit(event);
     }

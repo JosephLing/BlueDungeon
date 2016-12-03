@@ -29,14 +29,9 @@ public class TestItem extends ModItem{
     @Override
     public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         if (worldIn.isRemote){
-            Block currentBlock = worldIn.getBlockState(pos).getBlock();
-            if (currentBlock == Blocks.CRAFTING_TABLE){
-
-            } else if (currentBlock == Blocks.FURNACE){
-
-            }
-            //playerIn.addChatComponentMessage(new TextComponentString(worldIn.getBlockState(pos).getBlock().getLocalizedName()));
-            playerIn.addChatComponentMessage(new TextComponentString(CraftingManager.getInstance().getRecipeList().get(0).getClass().getName()));
+//            worldIn.getCombinedLight(pos, 1);
+            pos = pos.up();
+            playerIn.addChatComponentMessage(new TextComponentString(Integer.toString(worldIn.getLight(pos))));
         }
         return EnumActionResult.SUCCESS;
     }

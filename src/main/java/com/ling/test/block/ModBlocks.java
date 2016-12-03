@@ -4,6 +4,7 @@ package com.ling.test.block;
 import com.ling.test.ExampleMod;
 import com.ling.test.item.ModItem;
 import com.ling.test.item.TestItem;
+import com.ling.test.tileenitity.ExplodingSpawner;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -20,6 +21,8 @@ public class ModBlocks{
     public static Block crate_basic;
     public static Block crate_uncommon;
     public static Block crate_rare;
+
+    public static Block exploding_spawner;
 
     public static void preinit(){
         crate_basic = new CrateBasic(
@@ -45,6 +48,9 @@ public class ModBlocks{
                 new Item[] {Items.PAINTING, Items.PRISMARINE_CRYSTALS},
                 new Item[] {Items.DIAMOND, Items.REDSTONE}
         );
+
+        exploding_spawner = new ExplodingSpawnerBlock();
+
         registerBlocks();
     }
 
@@ -53,6 +59,8 @@ public class ModBlocks{
         registerBlock(crate_basic, "crate_basic");
         registerBlock(crate_uncommon, "crate_uncommon");
         registerBlock(crate_rare, "crate_rare");
+
+        registerBlock(exploding_spawner, "exploding_spawner");
     }
 
 
@@ -61,6 +69,8 @@ public class ModBlocks{
         registerRender(crate_basic);
         registerRender(crate_uncommon);
         registerRender(crate_rare);
+
+        registerRender(exploding_spawner);
     }
 
     public static void registerBlock(Block block, String name) {

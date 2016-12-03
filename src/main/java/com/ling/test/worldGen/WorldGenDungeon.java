@@ -38,8 +38,8 @@ public class WorldGenDungeon implements IWorldGenerator
             chunkX *= 16;
             chunkZ *= 16;
             if (WorldGenDungeon.goodLocation(DungeonWorldGen.chunks, chunkX, chunkZ, random)){
-                BASIC_DUNEGEON.generate(world, random, new BlockPos(chunkX, 10, chunkZ));
-                DungeonWorldGen.chunks.add(new BlockPos(chunkX, 10, chunkZ));
+                BASIC_DUNEGEON.generate(world, random, new BlockPos(chunkX, random.nextInt(10)+50, chunkZ));
+                DungeonWorldGen.chunks.add(new BlockPos(chunkX, 50, chunkZ));
             }
         }
     }
