@@ -3,6 +3,7 @@ package com.ling.test.worldGen;
 import com.ling.test.block.ModBlocks;
 import com.ling.test.tileenitity.ExplodingSpawner;
 import net.minecraft.block.Block;
+import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityMobSpawner;
@@ -50,6 +51,7 @@ public class DungeonWorldGen extends WorldGenerator
 
         genAreaRoof(chunkX, y, chunkZ, 9*size, height);
         clearSpace(chunkX, y, chunkZ, 9*size, height);
+        genEmptyRoom(chunkX+(9), y, chunkZ+9, 12, height, 4);
         for (int i = 0; i < size; i++)
         {
             for (int j = 0; j < size; j++)
@@ -64,7 +66,6 @@ public class DungeonWorldGen extends WorldGenerator
                 }
             }
         }
-        genEmptyRoom(chunkX+(9), y, chunkZ+9, 12, height, 4);
         return true;
     }
 
