@@ -43,16 +43,19 @@ public class ExplodingSpawner extends TileEntityMobSpawner
         // then we do NOT explode the spawner
         // DOESN"T WORK FOR DAY LIGHT AND NIGHT JUST EXPLODES???
         BlockPos pos = this.getSpawnerBaseLogic().getSpawnerPosition();
-        int minLightLevel= 15;
+        int minLightLevel= 20;
         int tempLightLevel;
         int x = -lightCheckRange;
         int z = -lightCheckRange;
         int y = 0;
         while (minLightLevel >= LIGHT_LEVEL_EXPLODE && x != lightCheckRange){
-            tempLightLevel = getLightLevelWorld(this.getWorld(), new BlockPos(pos.getX()+x, pos.getY(), pos.getZ()+z));
-            if (tempLightLevel < minLightLevel){
-                minLightLevel = tempLightLevel;
+            if (!this.getWorld().isRemote){
+                tempLightLevel = getLightLevelWorld(this.getWorld(), new BlockPos(pos.getX()+x, pos.getY(), pos.getZ()+z));
+                if (tempLightLevel < minLightLevel){
+                    minLightLevel = tempLightLevel;
+                }
             }
+
 
             if (y == 1){
                 x ++;

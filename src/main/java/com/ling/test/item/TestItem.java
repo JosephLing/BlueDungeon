@@ -28,7 +28,7 @@ public class TestItem extends ModItem{
 
     @Override
     public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        if (worldIn.isRemote){
+        if (!worldIn.isRemote){
 //            worldIn.getCombinedLight(pos, 1);
             pos = pos.up();
             playerIn.addChatComponentMessage(new TextComponentString(Integer.toString(worldIn.getLight(pos))));

@@ -28,7 +28,7 @@ public class TestWorldGenDungoen extends ModItem
 
     @Override
     public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        if (worldIn.isRemote)
+        if (!worldIn.isRemote)
         {
             DungeonWorldGen dungeon = new DungeonWorldGen();
             pos.add(2, 2, 2);
