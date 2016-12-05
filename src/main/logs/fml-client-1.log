@@ -174,7 +174,7 @@
 [16:56:43] [Client thread/TRACE] [FML/]: Recursing into package com
 [16:56:43] [Client thread/TRACE] [FML/]: Recursing into package com/ling
 [16:56:43] [Client thread/TRACE] [FML/]: Recursing into package com/ling/test
-[16:56:43] [Client thread/DEBUG] [FML/]: Identified a mod of type Lnet/minecraftforge/fml/common/Mod; (com.ling.test.ExampleMod) - loading
+[16:56:43] [Client thread/DEBUG] [FML/]: Identified a mod of type Lnet/minecraftforge/fml/common/Mod; (com.ling.blueDungeon.ExampleMod) - loading
 [16:56:43] [Client thread/TRACE] [test/]: Parsed dependency info : [] [] []
 [16:56:43] [Client thread/TRACE] [FML/]: Recursing into package com/ling/test/block
 [16:56:43] [Client thread/TRACE] [FML/]: Recursing into package com/ling/test/item

@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "normal": { "model": "blueDungeon:crate_uncommon" },
+    "inventory": { "model": "blueDungeon:crate_uncommon" }
+  }
+}
