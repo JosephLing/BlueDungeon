@@ -1,0 +1,13 @@
+itemGroup.bluedungeontab=Blue Dungeon
+
+
+# items
+item.test_item.name=Tests light level
+item.dev_test_gen.name=Generates Basic Dungeon
+
+# blocks
+tile.crate_basic.name=Basic Crate
+tile.crate_uncommon.name=Uncommon Crate
+tile.crate_rare.name=Rare Crate
+
+tile.exploding_spawner.name=Exploding Spawner

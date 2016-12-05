@@ -1,6 +1,0 @@
-{
-  "variants": {
-    "normal": { "model": "test:exploding_spawner" },
-    "inventory": { "model": "test:exploding_spawner" }
-  }
-}
