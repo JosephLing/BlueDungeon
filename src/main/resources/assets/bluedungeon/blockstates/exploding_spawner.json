@@ -1,6 +1,6 @@
 {
   "variants": {
-    "normal": { "model": "blueDungeon:exploding_spawner" },
-    "inventory": { "model": "blueDungeon:exploding_spawner" }
+    "normal": { "model": "bluedungeon:exploding_spawner" },
+    "inventory": { "model": "bluedungeon:exploding_spawner" }
   }
 }

@@ -77,7 +77,8 @@ public class DungeonWorldGen extends WorldGenerator
         genWorld.setBlockState(spawnerPos, ModBlocks.exploding_spawner.getDefaultState(), 2);
         TileEntity sp = genWorld.getTileEntity(spawnerPos);
         if (sp instanceof ExplodingSpawner){
-            ((ExplodingSpawner)sp).getSpawnerBaseLogic().setEntityName(DungeonHooks.getRandomDungeonMob(rand));
+            ((ExplodingSpawner)sp).getSpawnerBaseLogic().func_190894_a(DungeonHooks.getRandomDungeonMob(rand));
+//            ((ExplodingSpawner)sp).getSpawnerBaseLogic().setEntityName();
         }
     }
 

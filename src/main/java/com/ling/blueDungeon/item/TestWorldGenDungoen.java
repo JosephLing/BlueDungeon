@@ -22,13 +22,13 @@ public class TestWorldGenDungoen extends ModItem
 
 
     @Override
-    public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        if (!worldIn.isRemote)
+    public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand enumHand, EnumFacing hand, float facing, float hitX, float hitY) {
+        if (!world.isRemote)
         {
             DungeonWorldGen dungeon = new DungeonWorldGen();
             pos.add(2, 2, 2);
-            dungeon.generate(worldIn, itemRand, pos);
-            playerIn.addChatComponentMessage(new TextComponentString("creating structure..."));
+            dungeon.generate(world, itemRand, pos);
+            player.addChatComponentMessage(new TextComponentString("creating structure..."), true);
         }
         return EnumActionResult.SUCCESS;
     }

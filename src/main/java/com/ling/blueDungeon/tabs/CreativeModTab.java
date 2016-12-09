@@ -3,6 +3,7 @@ package com.ling.blueDungeon.tabs;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
 /**
  * Created by Joe on 31/10/2016.
@@ -15,7 +16,7 @@ public class CreativeModTab extends CreativeTabs{
     }
 
     @Override
-    public Item getTabIconItem() {
-        return Items.EMERALD;
+    public ItemStack getTabIconItem() {
+        return new ItemStack(Items.EMERALD);
     }
 }
