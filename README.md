@@ -1,4 +1,4 @@
-# ModdingTestMC1.10
+# BlueDungeon 1.11
 
 
 Documentation for forge modding: https://mcforge.readthedocs.io/en/latest/
